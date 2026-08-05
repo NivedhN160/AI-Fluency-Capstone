@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nivedh — AI Fluency Capstone Showcase | CodePulse Agent</title>
+  <meta name="description" content="General AI Fluency Capstone Project by Nivedh. Featuring the CodePulse Personal AI Agent, MCP tools integration, pre-build evals, and impact metrics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text-color: #0F172A;
+      --accent-color: #2563EB;
+      --muted-color: #475569;
+      --border-color: #CBD5E1;
+      --font-heading: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      font-size: 1rem;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border-color);
+      background-color: rgba(248, 250, 252, 0.95);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: #0F172A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-logo svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .brand-name {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--muted-color);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .nav-link:hover, .nav-link:focus-visible {
+      color: var(--accent-color);
+      background-color: #EFF6FF;
+      outline: 2px solid var(--accent-color);
+    }
+
+    .hero {
+      padding: 56px 0 44px;
+      text-align: left;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #EFF6FF;
+      color: var(--accent-color);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      margin-bottom: 16px;
+      border: 1px solid #BFDBFE;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      color: var(--text-color);
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: var(--muted-color);
+      max-width: 760px;
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-color);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      padding: 14px 26px;
+      min-height: 48px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary:hover, .btn-primary:focus-visible {
+      background-color: #1D4ED8;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      padding: 14px 26px;
+      min-height: 48px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border-color);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-secondary:hover, .btn-secondary:focus-visible {
+      background-color: #F1F5F9;
+      border-color: var(--accent-color);
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 40px 0 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-color);
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--muted-color);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .pill-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      background-color: #EFF6FF;
+      color: var(--accent-color);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      border: 1px solid #BFDBFE;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 50px;
+    }
+
+    .metric-card {
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .metric-val {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent-color);
+      margin-bottom: 4px;
+    }
+
+    .metric-lbl {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted-color);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 36px 0;
+      margin-top: 60px;
+      color: var(--muted-color);
+      font-size: 0.9rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 1.9rem;
+      }
+      .cta-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-primary, .btn-secondary {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container header-content">
+      <a href="/" class="brand" aria-label="Capstone Homepage">
+        <div class="brand-logo">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 44V20L36 36V20H44V44L28 28V44H20Z" fill="#3B82F6"/>
+          </svg>
+        </div>
+        <span class="brand-name">CodePulse Capstone</span>
+      </a>
+      <nav class="nav-links" aria-label="Capstone Navigation">
+        <a href="https://github.com/NivedhN160/AI-Fluency-Capstone" target="_blank" rel="noopener noreferrer" class="nav-link">Capstone GitHub ↗</a>
+        <a href="https://github.com/NivedhN160/AI-Fluency-Capstone/blob/main/CAPSTONE_IMPACT_REPORT.md" target="_blank" rel="noopener noreferrer" class="nav-link">Impact Report ↗</a>
+        <a href="https://www.linkedin.com/in/nivedhn160/" target="_blank" rel="noopener noreferrer" class="nav-link">LinkedIn ↗</a>
+        <a href="https://nivedh-portfolio.netlify.app" target="_blank" rel="noopener noreferrer" class="nav-link">Main Portfolio ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="badge">FlyRank AI Internship · General AI Fluency Capstone</div>
+      <h1>CodePulse — DevOps & Backend API Verification Agent</h1>
+      <p class="tagline">An autonomous Personal AI Agent powered by Model Context Protocol (MCP) live tools. CodePulse scans backend codebases, enforces secret isolation, executes subshell test suites, inspects web scraper politeness, and synthesizes structured audit reports.</p>
+      
+      <div class="cta-group">
+        <a href="https://github.com/NivedhN160/AI-Fluency-Capstone" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          Inspect Capstone Code on GitHub ➔
+        </a>
+        <a href="https://github.com/NivedhN160/AI-Fluency-Capstone/blob/main/CAPSTONE_IMPACT_REPORT.md" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          Read Capstone Impact Report 📄
+        </a>
+      </div>
+    </section>
+
+    <!-- Quantitative Impact Metrics -->
+    <section>
+      <h2 class="section-title">Capstone Impact Metrics</h2>
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-val">12.5 hrs</div>
+          <div class="metric-lbl">Weekly Time Saved via Automation</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">100%</div>
+          <div class="metric-lbl">Automated Subshell Test Coverage</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">0</div>
+          <div class="metric-lbl">Exposed Secret Leaks (.env Isolated)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">5 / 5</div>
+          <div class="metric-lbl">Pre-Build Evals Passed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: Agent Architecture & MCP Tools -->
+    <section>
+      <h2 class="section-title">Personal AI Agent Architecture (`CodePulse`)</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Live MCP Tool Engine</h3>
+          <p class="card-desc">CodePulse connects directly to 4 custom Model Context Protocol (MCP) tools: `fs_reader` (file tree scanner), `subshell_runner` (powershell command execution), `http_polite_inspector` (robots.txt compliance), and `report_writer` (markdown artifact builder).</p>
+          <div class="pill-group">
+            <span class="pill">fs_reader</span>
+            <span class="pill">subshell_runner</span>
+            <span class="pill">http_polite_inspector</span>
+            <span class="pill">report_writer</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Autonomous Execution Loop</h3>
+          <p class="card-desc">Operates on a multi-step reasoning loop: 1. Secret Scanning → 2. Subshell Pytest/TestClient Execution → 3. Scraper Rate-Limit Audit → 4. Markdown Report Artifact Generation.</p>
+          <div class="pill-group">
+            <span class="pill">Secret Scanning</span>
+            <span class="pill">Subshell Execution</span>
+            <span class="pill">Politeness Audit</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Verified Pre-Build Evals -->
+    <section>
+      <h2 class="section-title">Verified Pre-Build Evaluation Suite</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Eval 1 & 2: REST API & Postgres Docker Audit</h3>
+          <p class="card-desc">Verified 9 REST endpoints in FastAPI and confirmed `.env` gitignore secret isolation & Repository Pattern database decoupling in Docker Compose.</p>
+          <div class="pill-group">
+            <span class="pill">FastAPI CRUD</span>
+            <span class="pill">Postgres Docker</span>
+            <span class="pill">Repository Pattern</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Eval 3 & 4: Auth API & Async Background Job Queue</h3>
+          <p class="card-desc">Tested Supabase Auth Bearer JWT token verification (HTTP 401) and HTTP 202 Accept Fast background worker queues with idempotency & retry backoff.</p>
+          <div class="pill-group">
+            <span class="pill">Supabase Auth</span>
+            <span class="pill">HTTP 202 Accepted</span>
+            <span class="pill">Idempotency & Retries</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <p>© 2026 Nivedh. FlyRank AI Internship — General AI Fluency Capstone</p>
+      <p><a href="https://github.com/NivedhN160/AI-Fluency-Capstone" target="_blank" rel="noopener noreferrer" class="nav-link">github.com/NivedhN160/AI-Fluency-Capstone</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
