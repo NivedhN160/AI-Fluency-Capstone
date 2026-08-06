@@ -2,7 +2,7 @@ import os
 import sys
 import logging
 from datetime import datetime
-from typing import Dict, Any, List
+from typing import Dict, Any
 
 from mcp_tools import MCPToolSet
 
@@ -34,7 +34,6 @@ class CodePulseAgent:
         # ---------------------------------------------------------
         logger.info("[STEP 1/4] Auditing Repository Secret Isolation (.env check)")
         gitignore_res = self.mcp.fs_reader("read", os.path.join(target_path, ".gitignore"))
-        dir_res = self.mcp.fs_reader("list", target_path)
 
         secrets_isolated = False
         gitignore_content = gitignore_res.get("content", "") if gitignore_res.get("status") == "success" else ""
@@ -67,7 +66,7 @@ class CodePulseAgent:
 
         if test_rel_path:
             test_abs_path = test_rel_path if os.path.isabs(test_rel_path) else os.path.join(r"C:\Users\nived\.gemini\antigravity-cli\brain\960f87be-2bb8-4ec7-9a9a-c0c6864012d0", test_rel_path)
-            python_exe = os.path.join(target_path, "venv", "Scripts", "python.exe")
+            python_exe = os.path.join(self.base_repo_dir, "ai fluency capstone", "venv", "Scripts", "python.exe")
             if not os.path.exists(python_exe):
                 python_exe = sys.executable
 

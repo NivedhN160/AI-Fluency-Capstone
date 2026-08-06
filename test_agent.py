@@ -8,7 +8,7 @@ from agent_runner import CodePulseAgent
 def run_capstone_agent_evals():
     print("================================================================================")
     print("[CODEPULSE AGENT] CAPSTONE AUTOMATED EVALUATION SUITE")
-    print("================================================================巧\n".replace("巧", ""))
+    print("================================================================================\n")
 
     agent = CodePulseAgent(base_repo_dir=r"E:\Flyrank internship")
 

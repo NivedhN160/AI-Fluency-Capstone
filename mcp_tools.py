@@ -1,8 +1,8 @@
 import os
 import subprocess
 import urllib.robotparser
-import urllib.request
-from typing import Dict, Any, List, Tuple
+import urllib.parse
+from typing import Dict, Any
 
 class MCPToolSet:
     """
@@ -69,7 +69,7 @@ class MCPToolSet:
             rp.read()
 
             can_fetch = rp.can_fetch(user_agent, url)
-            crawl_delay = rp.crawl_delay(user_agent) or 1.0
+            crawl_delay = rp.crawl_delay(user_agent) or 1.5
 
             return {
                 "status": "success",
