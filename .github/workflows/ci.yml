@@ -1,0 +1,18 @@
+name: Capstone 5 - CodePulse AI Agent CI
+
+on: [push, pull_request]
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install pydantic
+    - name: Run Automated Agent Evals
+      run: python test_agent.py
