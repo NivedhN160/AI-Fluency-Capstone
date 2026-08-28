@@ -6,13 +6,13 @@ jobs:
   eval:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
       with:
         python-version: "3.11"
     - name: Install dependencies
       run: |
-        pip install --upgrade pip
+        python -m pip install --upgrade pip
         pip install pydantic
     - name: Run Automated Agent Evals
       run: python test_agent.py
